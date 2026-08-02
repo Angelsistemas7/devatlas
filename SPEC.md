@@ -42,6 +42,7 @@ type AtlasEntry = {
 
 - **ErrorAtlas**: [`src/lib/types.ts`](https://github.com/Angelsistemas7/error-atlas/blob/main/src/lib/types.ts) implementa este esquema (sin el campo opcional `sources` todavía — los issues relacionados se buscan en vivo en vez de guardarse).
 - **VulnAtlas**: [`src/lib/types.ts`](https://github.com/Angelsistemas7/vuln-atlas/blob/master/src/lib/types.ts) implementa `AtlasEntry` con `sources` desde el día uno, y agrega campos propios de vulnerabilidades: `cveId`, `ghsaId`, `cwes`, `severity`, `cvss` — todos tomados literalmente de la fuente (GHSA/NVD), nunca calculados. Es la primera prueba real de que el formato compartido generaliza a un segundo dominio sin romperse.
+- **PackageAtlas**: [`src/lib/types.ts`](https://github.com/Angelsistemas7/package-atlas/blob/master/src/lib/types.ts) agrega `packageName`, `ecosystem`, `status`, `statusMessage` (texto literal de la fuente, nunca resumido) y `replacement`. Confirma el mismo patrón de extensión que VulnAtlas en un tercer dominio distinto.
 
 ## Extensión por módulo
 

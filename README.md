@@ -9,8 +9,9 @@ Cada "Atlas" (errores, vulnerabilidades, arquitectura, prompts...) resuelve un p
 ## Estado actual (honesto)
 
 - **[ErrorAtlas](https://github.com/Angelsistemas7/error-atlas)** — catálogo curado de errores de desarrollo, búsqueda, vínculo en vivo con issues/PRs reales de GitHub, servidor MCP y CLI. Ver su propio repo para detalle y roadmap.
-- **[VulnAtlas](https://github.com/Angelsistemas7/vuln-atlas)** — catálogo curado de vulnerabilidades reales (8 entradas iniciales, extraídas de la GitHub Advisory Database oficial), con CVE/GHSA reales, causa raíz y remediación. Sin bot de sincronización ni MCP todavía.
-- Todo lo demás en este documento es **visión y diseño**, no código construido. Se marca explícitamente qué existe y qué no para no vender algo que todavía no está — el mismo principio que siguen ambos módulos de nunca fabricar datos.
+- **[VulnAtlas](https://github.com/Angelsistemas7/vuln-atlas)** — catálogo curado de vulnerabilidades reales (16 entradas, extraídas de la GitHub Advisory Database oficial), con CVE/GHSA reales, causa raíz y remediación. Sin bot de sincronización ni MCP todavía.
+- **[PackageAtlas](https://github.com/Angelsistemas7/package-atlas)** — catálogo curado de incidentes reales de paquetes (8 entradas: deprecaciones, modo mantenimiento, EOL), verificados contra el registro npm y documentación oficial de cada proyecto.
+- Todo lo demás en este documento es **visión y diseño**, no código construido. Se marca explícitamente qué existe y qué no para no vender algo que todavía no está — el mismo principio que siguen los tres módulos de nunca fabricar datos.
 
 ## El formato compartido (`AtlasEntry`)
 
@@ -31,8 +32,8 @@ Orden sugerido por qué tan reusable es la infraestructura ya construida en Erro
 | Módulo | Qué cubriría |
 |---|---|
 | **ErrorAtlas** ✅ | Errores de desarrollo — en producción |
-| **VulnAtlas** ✅ | Vulnerabilidades y patrones inseguros de código — en producción (v0, 8 entradas). Reglas Semgrep/CodeQL reales cuando aplique, todavía sin construir |
-| **PackageAtlas** | Incidentes conocidos de paquetes/dependencias (breaking changes, CVEs, deprecaciones) |
+| **VulnAtlas** ✅ | Vulnerabilidades y patrones inseguros de código — en producción (v0, 16 entradas). Reglas Semgrep/CodeQL reales cuando aplique, todavía sin construir |
+| **PackageAtlas** ✅ | Incidentes conocidos de paquetes/dependencias (deprecaciones, EOL, modo mantenimiento) — en producción (v0, 8 entradas). Breaking changes de versiones mayores todavía sin cubrir |
 | **ArchAtlas** | Patrones y anti-patrones de arquitectura, con trade-offs documentados |
 | **PromptAtlas** | Patrones de prompting que funcionan/fallan para tareas concretas, con el modelo y la fecha (esto cambia rápido y hay que fecharlo siempre) |
 
@@ -49,7 +50,7 @@ Módulos de infraestructura compartida, también sin construir:
 
 ## Contribuir
 
-Cada módulo vive en su propio repo: [error-atlas](https://github.com/Angelsistemas7/error-atlas), [vuln-atlas](https://github.com/Angelsistemas7/vuln-atlas). Este repo (`devatlas`) es donde vive la visión compartida y el esquema `AtlasEntry` — cambios al formato se proponen aquí, cambios de contenido van al repo del módulo correspondiente.
+Cada módulo vive en su propio repo: [error-atlas](https://github.com/Angelsistemas7/error-atlas), [vuln-atlas](https://github.com/Angelsistemas7/vuln-atlas), [package-atlas](https://github.com/Angelsistemas7/package-atlas). Este repo (`devatlas`) es donde vive la visión compartida y el esquema `AtlasEntry` — cambios al formato se proponen aquí, cambios de contenido van al repo del módulo correspondiente.
 
 ## Licencia
 
