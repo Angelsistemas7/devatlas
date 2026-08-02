@@ -40,8 +40,14 @@ type AtlasEntry = {
 
 ## Implementaciones actuales
 
-- **ErrorAtlas**: `src/lib/types.ts` implementa este esquema (sin el campo opcional `sources` todavía — los issues relacionados se buscan en vivo en vez de guardarse).
+- **ErrorAtlas**: [`src/lib/types.ts`](https://github.com/Angelsistemas7/error-atlas/blob/main/src/lib/types.ts) implementa este esquema (sin el campo opcional `sources` todavía — los issues relacionados se buscan en vivo en vez de guardarse).
+- **VulnAtlas**: [`src/lib/types.ts`](https://github.com/Angelsistemas7/vuln-atlas/blob/master/src/lib/types.ts) implementa `AtlasEntry` con `sources` desde el día uno, y agrega campos propios de vulnerabilidades: `cveId`, `ghsaId`, `cwes`, `severity`, `cvss` — todos tomados literalmente de la fuente (GHSA/NVD), nunca calculados. Es la primera prueba real de que el formato compartido generaliza a un segundo dominio sin romperse.
+
+## Extensión por módulo
+
+Un módulo puede agregar campos propios sobre `AtlasEntry` (como hace VulnAtlas) sin que eso obligue a cambiar la v0 del esquema compartido — solo se propone un campo nuevo aquí cuando **dos o más módulos** lo necesitarían igual. Ejemplo: `severity`/`cvss` se quedan en VulnAtlas porque no aplican a ErrorAtlas; si un tercer módulo también necesitara un campo de severidad con la misma semántica, ahí se evalúa subirlo a `AtlasEntry`.
 
 ## Historial
 
 - **v0** (2026-08-01): primera versión, extraída del tipo `ErrorEntry` ya en producción en ErrorAtlas.
+- **v0, validada por segundo módulo** (2026-08-01): VulnAtlas implementa el mismo esquema base y confirma que `sources` (antes opcional/sin uso real) funciona bien como campo requerido desde el arranque de un módulo nuevo.
